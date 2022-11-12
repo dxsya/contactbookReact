@@ -3,7 +3,7 @@ import React from 'react';
 const ContactList = (props) => {
     return (
         <div>
-            <table border={2}>
+            <table border={3}>
                 <thead>
                     <tr>
                         <th>First Name</th>
@@ -12,13 +12,17 @@ const ContactList = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.contacts.map((contact) => (
+                    {props.contacts.map((contact, index) => (
                         <tr key={`${contact.firstName} ${contact.lastName}`}>
                             <td>{contact.name}</td>
                             <td>{contact.lastname}</td>
                             <td>{contact.number}</td>
                             <td>
-                                <button>edit</button>
+                                <button
+                                    onClick={() => props.editContacts(index)}
+                                >
+                                    edit
+                                </button>
                                 <button
                                     onClick={() =>
                                         props.deleteContact(contact.id)
